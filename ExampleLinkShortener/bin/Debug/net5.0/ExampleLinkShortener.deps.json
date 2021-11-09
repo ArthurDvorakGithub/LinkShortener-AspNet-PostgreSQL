@@ -34,6 +34,7 @@
       "ExampleLinkShortener/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.Facebook": "5.0.0",
+          "Microsoft.AspNetCore.Authentication.Google": "5.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.11",
           "Microsoft.EntityFrameworkCore": "5.0.11",
           "Microsoft.EntityFrameworkCore.Design": "5.0.11",
@@ -341,6 +342,17 @@
         },
         "compile": {
           "lib/net5.0/Microsoft.AspNetCore.Authentication.Facebook.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.Google/5.0.0": {
+        "runtime": {
+          "lib/net5.0/Microsoft.AspNetCore.Authentication.Google.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.52605"
+          }
+        },
+        "compile": {
+          "lib/net5.0/Microsoft.AspNetCore.Authentication.Google.dll": {}
         }
       },
       "Microsoft.AspNetCore.Cryptography.Internal/5.0.11": {
@@ -3086,6 +3098,13 @@
       "sha512": "sha512-LTuwNncA8CbYrdIeOu2+extCzbax+T3nvFi9oGVImnqgejHPV2aDkntkIqccUJ4iPmp1xDPlCEiIEkE0yynEmA==",
       "path": "microsoft.aspnetcore.authentication.facebook/5.0.0",
       "hashPath": "microsoft.aspnetcore.authentication.facebook.5.0.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Authentication.Google/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1fz/ju0RQV5OsA0kGEMwMnRHkQXwW3tel7t7wayZi7Fc7/zPO820PyW+W+AmJ/lfT9zzTYoaLOUqDB/WAM/Eqw==",
+      "path": "microsoft.aspnetcore.authentication.google/5.0.0",
+      "hashPath": "microsoft.aspnetcore.authentication.google.5.0.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Cryptography.Internal/5.0.11": {
       "type": "package",

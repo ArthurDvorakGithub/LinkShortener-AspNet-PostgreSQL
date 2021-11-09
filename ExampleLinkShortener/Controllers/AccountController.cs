@@ -166,12 +166,89 @@ namespace ExampleLinkShortener.Controllers
                         //do somethng here
                     }
                 }
-                return View("Login");
+                return View("FacebookLogin");
             }
         }
         //public IActionResult GoogleLogInSuccess()
         //{
         //    return View();
         //}
+
+
+        // Login with Google
+
+        [HttpPost]
+        public IActionResult ExternalLoginGoogle(string returnUrl = null)
+        {
+            // Request a redirect to the external login provider.
+            string provider = "Google";
+            var redirectUrl = Url.Action(nameof(ExternalLoginCallbackGoogle), "Account", new { returnUrl });
+            var properties = _signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
+            return Challenge(properties, provider);
+        }
+        [TempData]
+        public string ErrorMessageGoogle { get; set; }
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> ExternalLoginCallbackGoogle(string returnUrl = null, string remoteError = null)
+        {
+            if (remoteError != null)
+            {
+                ErrorMessageGoogle = $"Error from external provider: {remoteError}";
+                return RedirectToAction(nameof(ExternalLoginGoogle));
+            }
+            var info = await _signInManager.GetExternalLoginInfoAsync();
+            if (info == null)
+            {
+                return RedirectToAction(nameof(ExternalLoginGoogle));
+            }
+            // Sign in the user with this external login provider if the user already has a login.
+            var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false, bypassTwoFactor: true);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "Home");
+                //_logger.LogInformation("User logged in with {Name} provider.", info.LoginProvider);
+                //return RedirectToAction(nameof(returnUrl));
+            }
+            else
+            {
+                string email = string.Empty;
+                string firstName = string.Empty;
+                string lastName = string.Empty;
+                string profileImage = string.Empty;
+                //get google login user infromation like that.
+                if (info.Principal.HasClaim(c => c.Type == ClaimTypes.Email))
+                {
+                    email = info.Principal.FindFirstValue(ClaimTypes.Email);
+                }
+                if (info.Principal.HasClaim(c => c.Type == ClaimTypes.GivenName))
+                {
+                    firstName = info.Principal.FindFirstValue(ClaimTypes.GivenName);
+                }
+                if (info.Principal.HasClaim(c => c.Type == ClaimTypes.GivenName))
+                {
+                    lastName = info.Principal.FindFirstValue(ClaimTypes.Surname);
+                }
+                if (info.Principal.HasClaim(c => c.Type == "picture"))
+                {
+                    profileImage = info.Principal.FindFirstValue("picture");
+                }
+                var user = new IdentityUser { UserName = email, Email = email, EmailConfirmed = true };
+                var result2 = await _userManager.CreateAsync((User)user);
+                if (result2.Succeeded)
+                {
+                    result2 = await _userManager.AddLoginAsync((User)user, info);
+                    if (result2.Succeeded)
+                    {
+                        //do somethng here
+                    }
+                }
+                return View("GoogleLogin");
+            }
+        }
+        public IActionResult GoogleLogInSuccess()
+        {
+            return View();
+        }
     }
 }

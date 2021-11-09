@@ -174,3 +174,7 @@ C:\Users\Arthur\Downloads\LinkShortenerAspNet-main\LinkShortenerAspNet-main\Exam
 C:\Users\Arthur\Downloads\LinkShortenerAspNet-main\LinkShortenerAspNet-main\ExampleLinkShortener\obj\Debug\net5.0\ExampleLinkShortener.genruntimeconfig.cache
 C:\Users\Arthur\Downloads\LinkShortenerAspNet-main\LinkShortenerAspNet-main\ExampleLinkShortener\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.Facebook.dll
 C:\Users\Arthur\Downloads\LinkShortenerAspNet-main\LinkShortenerAspNet-main\ExampleLinkShortener\obj\Debug\net5.0\Razor\Views\Account\FacebookLogin.cshtml.g.cs
+C:\Users\Arthur\source\repos\ExampleLinkShortener\ExampleLinkShortener\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.Facebook.dll
+C:\Users\Arthur\source\repos\ExampleLinkShortener\ExampleLinkShortener\obj\Debug\net5.0\Razor\Views\Account\FacebookLogin.cshtml.g.cs
+C:\Users\Arthur\source\repos\ExampleLinkShortener\ExampleLinkShortener\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.Google.dll
+C:\Users\Arthur\source\repos\ExampleLinkShortener\ExampleLinkShortener\obj\Debug\net5.0\Razor\Views\Account\GoogleLogin.cshtml.g.cs

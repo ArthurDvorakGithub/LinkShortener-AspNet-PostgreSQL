@@ -18,6 +18,8 @@
         <a asp-controller="Account" asp-action="Register">Регистрация</a>
     }
 
+
+    <!--Login with Facebook-->
     <div class="row">
     <div class="col-sm-12">
         <div class="justify-content-center">
@@ -32,7 +34,25 @@
     </div>
     </div>
 
+    <hr />
+    <!--Login with Google-->
+    <div class="row">
+    <div class="col-sm-12">
+        <div class="justify-content-center">
+            <form asp-action="ExternalLoginGoogle" asp-controller="Account">
+                <h4 class="text-center margin-top">Login With Google Account</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <input type="text" hidden="hidden" name="returnUrl" value="/Home/Index" class="currenctURL1" id="currentURL1" />
+                <input type="submit" value="Login With Google" class="btn btn-success" />
+            </form>
+        </div>
+    </div>
+    </div>
+
 </div>
+
+<!--Form-->
 
 <div class="container col-xl-10 col-xxl-8 px-4 py-5">
     <div class="row align-items-center g-lg-5 py-5">
@@ -64,7 +84,7 @@
 </div>
 
 
-
+<!--News-->
 <div class="container px-4 py-5" id="featured-3">
     <h2 class="pb-2 border-bottom">News</h2>
     <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
