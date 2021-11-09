@@ -31,7 +31,16 @@ namespace ExampleLinkShortener
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationContext>();
 
-          
+
+            services.AddAuthentication()
+             .AddFacebook(facebookOptions =>
+             {
+                 facebookOptions.AppId = "226133136140998";
+                 facebookOptions.AppSecret = "98a9a17feb641b6ec11e1dcfcdd65729";
+                 facebookOptions.AccessDeniedPath = "/AccessDeniedPathInfo";
+
+             });
+
 
             services.AddControllersWithViews();
 

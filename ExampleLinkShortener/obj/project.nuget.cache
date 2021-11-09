@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "lbxJYwlreOEHqM+wcpEi4+YBEf5SmQJ55I5hGFVFiISjsj5E5dyGtfut2e/5pCQyL0THFJy1dKEMNn2JJti4dA==",
+  "dgSpecHash": "UQcC2Q2CoLWqDInSroRzQCWSgOvln5nPRVbJHuFLsidh+oL14AGdvQR+5LUpawaZGzc4lZaEFTbvwrVCzZlaEA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Arthur\\source\\repos\\ExampleLinkShortener\\ExampleLinkShortener\\ExampleLinkShortener.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Arthur\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\Arthur\\.nuget\\packages\\microsoft.aspnetcore.authentication.facebook\\5.0.0\\microsoft.aspnetcore.authentication.facebook.5.0.0.nupkg.sha512",
     "C:\\Users\\Arthur\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.11\\microsoft.aspnetcore.cryptography.internal.5.0.11.nupkg.sha512",
     "C:\\Users\\Arthur\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.11\\microsoft.aspnetcore.cryptography.keyderivation.5.0.11.nupkg.sha512",
     "C:\\Users\\Arthur\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\5.0.11\\microsoft.aspnetcore.identity.entityframeworkcore.5.0.11.nupkg.sha512",
