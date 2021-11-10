@@ -36,8 +36,8 @@ namespace ExampleLinkShortener
             services.AddAuthentication()
              .AddFacebook(facebookOptions =>
              {
-                 facebookOptions.AppId = "226133136140998";
-                 facebookOptions.AppSecret = "98a9a17feb641b6ec11e1dcfcdd65729";
+                 facebookOptions.AppId = "x";
+                 facebookOptions.AppSecret = "x";
                  facebookOptions.AccessDeniedPath = "/AccessDeniedPathInfo";
 
              });
@@ -48,8 +48,8 @@ namespace ExampleLinkShortener
              {
                  IConfigurationSection googleAuthNSection =
                        Configuration.GetSection("Authentication:Google");
-                 options.ClientId = "102100967624-evq33higtn1i0036nfvdacjmp57a5sve.apps.googleusercontent.com";
-                 options.ClientSecret = "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";
+                 options.ClientId = "x";
+                 options.ClientSecret = "x";
                  //this function is get user google profile image
                  options.Scope.Add("profile");
                  options.Events.OnCreatingTicket = (context) =>
