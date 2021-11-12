@@ -49,7 +49,7 @@ namespace ExampleLinkShortener
                  IConfigurationSection googleAuthNSection =
                        Configuration.GetSection("Authentication:Google");
                  options.ClientId = "x";
-                 options.ClientSecret = "x";
+                 options.ClientSecret = "x  ";
                  //this function is get user google profile image
                  options.Scope.Add("profile");
                  options.Events.OnCreatingTicket = (context) =>

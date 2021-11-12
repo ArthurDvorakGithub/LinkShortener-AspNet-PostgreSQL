@@ -4,6 +4,9 @@
 
 <div class="text-center">
 
+
+    <!--Login and Register-->
+
     @if (User.Identity.IsAuthenticated)
     {
         <p>@User.Identity.Name</p>
@@ -19,107 +22,85 @@
     }
 
 
-    <!--Login with Facebook-->
-    <div class="row">
-    <div class="col-sm-12">
-        <div class="justify-content-center">
-            <form asp-action="ExternalLogin" asp-controller="Account">
-                <h4 class="text-center margin-top">Login With Facebook Account</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <input type="text" hidden="hidden" name="returnUrl" value="/Home/Index" class="currenctURL1" id="currentURL1" />
-                <input type="submit" value="Login With Facebook" class="btn btn-primary" />
-            </form>
-        </div>
-    </div>
-    </div>
+<!--Url Shortener-->
 
-    <hr />
-    <!--Login with Google-->
-    <div class="row">
-    <div class="col-sm-12">
-        <div class="justify-content-center">
-            <form asp-action="ExternalLoginGoogle" asp-controller="Account">
-                <h4 class="text-center margin-top">Login With Google Account</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <input type="text" hidden="hidden" name="returnUrl" value="/Home/Index" class="currenctURL1" id="currentURL1" />
-                <input type="submit" value="Login With Google" class="btn btn-success" />
-            </form>
-        </div>
+<div class="jumbotron row text-center">
+    <div class="col-12">
+        <h1 class="text-center">FREE URL SHORTNER</h1>
     </div>
+    <div id="longUrlTxtDiv" class="col-lg-8 col-md-8 col-sm-12 offset-lg-2 offset-md-2">
+        <div class="input-group">
+            <input type="text" class="form-control form-control-lg" id="TxtOriginalUrl" placeholder="Enter link">
+            <a href="#" id="BtnShortUrl" class="btn btn-primary btn-lg">Short</a>
+        </div>
+        <div id="longUrl" class="mt-2"></div>
+        <div id="shortUrl" class="badge badge-light mt-2 copy-box hide-element"></div>
     </div>
-
-</div>
-
-<!--Form-->
-
-<div class="container col-xl-10 col-xxl-8 px-4 py-5">
-    <div class="row align-items-center g-lg-5 py-5">
-        <div class="col-lg-7 text-center text-lg-start">
-            <h1 class="display-4 fw-bold lh-1 mb-3">Vertically centered hero sign-up form</h1>
-            <p class="col-lg-10 fs-4">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
-        </div>
-        <div class="col-md-10 mx-auto col-lg-5">
-            <form class="p-4 p-md-5 border rounded-3 bg-light">
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">Email address</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                    <label for="floatingPassword">Password</label>
-                </div>
-                <div class="checkbox mb-3">
-                    <label>
-                        <input type="checkbox" value="remember-me"> Remember me
-                    </label>
-                </div>
-                <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
-                <hr class="my-4">
-                <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
-            </form>
-        </div>
+    <div id="landing-page-info" class="col-lg-8 col-md-8 col-sm-12 offset-lg-2 offset-md-2 mt-3">
+        <p class="text-muted">URL shortening service offered by LinkShortener Creation. This service comes with unique features like password protection and expiry date.</p>
     </div>
 </div>
 
 
-<!--News-->
-<div class="container px-4 py-5" id="featured-3">
-    <h2 class="pb-2 border-bottom">News</h2>
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-        <div class="feature col">
-            <div class="feature-icon bg-primary bg-gradient">
-                <svg class="bi" width="1em" height="1em"><use xlink:href="#collection"></use></svg>
+
+<!--Pricing-->
+<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+    <h1 class="display-4 fw-normal">Pricing</h1>
+    <p class="fs-5 text-muted">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
+</div>
+
+<main>
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal">Free</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">$0<small class="text-muted fw-light">/mo</small></h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>10 users included</li>
+                        <li>2 GB of storage</li>
+                        <li>Email support</li>
+                        <li>Help center access</li>
+                    </ul>
+                    <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>
+                </div>
             </div>
-            <h2>Featured title</h2>
-            <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-            <a href="#" class="icon-link">
-                Call to action
-                <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"></use></svg>
-            </a>
         </div>
-        <div class="feature col">
-            <div class="feature-icon bg-primary bg-gradient">
-                <svg class="bi" width="1em" height="1em"><use xlink:href="#people-circle"></use></svg>
+        <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal">Pro</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">$15<small class="text-muted fw-light">/mo</small></h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>20 users included</li>
+                        <li>10 GB of storage</li>
+                        <li>Priority email support</li>
+                        <li>Help center access</li>
+                    </ul>
+                    <button type="button" class="w-100 btn btn-lg btn-primary">Get started</button>
+                </div>
             </div>
-            <h2>Featured title</h2>
-            <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-            <a href="#" class="icon-link">
-                Call to action
-                <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"></use></svg>
-            </a>
         </div>
-        <div class="feature col">
-            <div class="feature-icon bg-primary bg-gradient">
-                <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"></use></svg>
+        <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                <div class="card-header py-3 text-white bg-primary border-primary">
+                    <h4 class="my-0 fw-normal">Enterprise</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">$29<small class="text-muted fw-light">/mo</small></h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>30 users included</li>
+                        <li>15 GB of storage</li>
+                        <li>Phone and email support</li>
+                        <li>Help center access</li>
+                    </ul>
+                    <button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button>
+                </div>
             </div>
-            <h2>Featured title</h2>
-            <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-            <a href="#" class="icon-link">
-                Call to action
-                <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"></use></svg>
-            </a>
         </div>
     </div>
-</div>
+</main>

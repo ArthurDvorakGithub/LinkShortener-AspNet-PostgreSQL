@@ -20,4 +20,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\сontent\Images\g100px.png" />
+  </ItemGroup>
+
 </Project>
