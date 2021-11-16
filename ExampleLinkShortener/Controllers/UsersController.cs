@@ -1,4 +1,5 @@
-﻿using ExampleLinkShortener.Models;
+﻿
+using ExampleLinkShortener.DataAccess.Entities;
 using ExampleLinkShortener.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;

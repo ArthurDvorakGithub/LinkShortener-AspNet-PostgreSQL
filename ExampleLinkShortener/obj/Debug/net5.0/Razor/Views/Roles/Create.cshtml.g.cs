@@ -21,13 +21,13 @@ using ExampleLinkShortener;
 #nullable disable
 #nullable restore
 #line 2 "C:\Users\Arthur\source\repos\ExampleLinkShortener\ExampleLinkShortener\Views\_ViewImports.cshtml"
-using ExampleLinkShortener.Models;
+using ExampleLinkShortener.DataAccess.Entities;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b2618f27e9eb1900d370b72ef0136ee89a5d3e31", @"/Views/Roles/Create.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6ece8d0dbe9d1a0b86a47f2dc24b7705ffa457b8", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e1b0edd7340a4545418f8aa07aab6fbd92e379db", @"/Views/_ViewImports.cshtml")]
     public class Views_Roles_Create : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<string>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("text-danger"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -60,7 +60,7 @@ using ExampleLinkShortener.Models;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             WriteLiteral("\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("div", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b2618f27e9eb1900d370b72ef0136ee89a5d3e314390", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("div", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b2618f27e9eb1900d370b72ef0136ee89a5d3e314403", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationSummaryTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.ValidationSummaryTagHelper>();
@@ -82,7 +82,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationSummaryTagHelper.ValidationSumma
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\n\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b2618f27e9eb1900d370b72ef0136ee89a5d3e316007", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b2618f27e9eb1900d370b72ef0136ee89a5d3e316020", async() => {
                 WriteLiteral("\n    <div class=\"form-group\">\n        <label for=\"name\">Новая роль</label>\n        <input name=\"name\" class=\"form-control\" />\n    </div>\n    <button type=\"submit\" class=\"btn btn-primary\">Добавить</button>\n");
             }
             );

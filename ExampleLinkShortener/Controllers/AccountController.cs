@@ -1,4 +1,4 @@
-﻿using ExampleLinkShortener.Models;
+﻿using ExampleLinkShortener.DataAccess;
 using ExampleLinkShortener.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -9,6 +9,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using ExampleLinkShortener.DataAccess.Entities;
 
 namespace ExampleLinkShortener.Controllers
 {

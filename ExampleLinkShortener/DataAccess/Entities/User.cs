@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ExampleLinkShortener.Models
+namespace ExampleLinkShortener.DataAccess.Entities
 {
     public class User : IdentityUser
     {

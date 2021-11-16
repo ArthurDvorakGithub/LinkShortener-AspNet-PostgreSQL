@@ -21,7 +21,7 @@ using ExampleLinkShortener;
 #nullable disable
 #nullable restore
 #line 2 "C:\Users\Arthur\source\repos\ExampleLinkShortener\ExampleLinkShortener\Views\_ViewImports.cshtml"
-using ExampleLinkShortener.Models;
+using ExampleLinkShortener.DataAccess.Entities;
 
 #line default
 #line hidden
@@ -34,7 +34,7 @@ using Microsoft.AspNetCore.Identity;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"bff2f2bff138849903d08d3a1573286bd0299e01", @"/Views/Account/GoogleLogin.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6ece8d0dbe9d1a0b86a47f2dc24b7705ffa457b8", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e1b0edd7340a4545418f8aa07aab6fbd92e379db", @"/Views/_ViewImports.cshtml")]
     public class Views_Account_GoogleLogin : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "ExternalLogin", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -74,7 +74,7 @@ using Microsoft.AspNetCore.Identity;
 #line hidden
 #nullable disable
             WriteLiteral("<div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n        <div class=\"justify-content-center\">\r\n            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bff2f2bff138849903d08d3a1573286bd0299e014552", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bff2f2bff138849903d08d3a1573286bd0299e014565", async() => {
                 WriteLiteral("\r\n                <h4 class=\"text-center margin-top\">Login With Google Account</h4>\r\n                <hr />\r\n                ");
 #nullable restore
 #line 13 "C:\Users\Arthur\source\repos\ExampleLinkShortener\ExampleLinkShortener\Views\Account\GoogleLogin.cshtml"

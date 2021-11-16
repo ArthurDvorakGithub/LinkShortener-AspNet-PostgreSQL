@@ -178,3 +178,8 @@ C:\Users\Arthur\source\repos\ExampleLinkShortener\ExampleLinkShortener\bin\Debug
 C:\Users\Arthur\source\repos\ExampleLinkShortener\ExampleLinkShortener\obj\Debug\net5.0\Razor\Views\Account\FacebookLogin.cshtml.g.cs
 C:\Users\Arthur\source\repos\ExampleLinkShortener\ExampleLinkShortener\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.Google.dll
 C:\Users\Arthur\source\repos\ExampleLinkShortener\ExampleLinkShortener\obj\Debug\net5.0\Razor\Views\Account\GoogleLogin.cshtml.g.cs
+C:\Users\Arthur\source\repos\ExampleLinkShortener\ExampleLinkShortener\obj\Debug\net5.0\ExampleLinkShortener.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Arthur\source\repos\ExampleLinkShortener\ExampleLinkShortener\bin\Debug\net5.0\Microsoft.OpenApi.dll
+C:\Users\Arthur\source\repos\ExampleLinkShortener\ExampleLinkShortener\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Arthur\source\repos\ExampleLinkShortener\ExampleLinkShortener\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Arthur\source\repos\ExampleLinkShortener\ExampleLinkShortener\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
