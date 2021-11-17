@@ -1,6 +1,7 @@
 using ExampleLinkShortener.DataAccess;
 using ExampleLinkShortener.DataAccess.Entities;
 using ExampleLinkShortener.Models;
+using ExampleLinkShortener.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -74,10 +75,14 @@ namespace ExampleLinkShortener
 
             services.AddControllersWithViews();
 
+            services.AddScoped<IShortenerService, ShortenerService>();
+            services.AddScoped<DbSeeder>();
+
         }
 
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app, DbSeeder seeder)
         {
+            seeder.Seed().Wait();
             app.UseDeveloperExceptionPage();
 
             app.UseSwagger();

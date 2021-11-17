@@ -10,6 +10,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ExampleLinkShortener.DataAccess.Entities;
+using Microsoft.AspNetCore.Authentication;
 
 namespace ExampleLinkShortener.Controllers
 {
@@ -17,11 +18,13 @@ namespace ExampleLinkShortener.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        RoleManager<IdentityRole> _roleManager;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
+        public AccountController(RoleManager<IdentityRole> roleManager, UserManager<User> userManager, SignInManager<User> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
         }
 
         [HttpGet]
@@ -41,6 +44,7 @@ namespace ExampleLinkShortener.Controllers
                 if (result.Succeeded)
                 {
                     // установка куки
+ 
                     await _signInManager.SignInAsync(user, false);
                     return RedirectToAction("Index", "Home");
                 }
@@ -67,33 +71,54 @@ namespace ExampleLinkShortener.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result =
-                    await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
-                if (result.Succeeded)
+                if (ModelState.IsValid)
                 {
-                    // проверяем, принадлежит ли URL приложению
-                    if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
+                    var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+                    if (result.Succeeded)
                     {
-                        return Redirect(model.ReturnUrl);
+                        // проверяем, принадлежит ли URL приложению
+                        if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
+                        {
+                            return Redirect(model.ReturnUrl);
+                        }
+                        else
+                        {
+
+                            var user = await _userManager.FindByEmailAsync(model.Email);
+                            var roles = await _userManager.GetRolesAsync(user);
+
+                            if (roles.Contains("admin"))
+                            {
+                                return RedirectToAction("Index", "PanelAdmin");
+                            }
+                            else if (!roles.Any() || roles.Contains("user"))
+                            {
+                                return RedirectToAction("Index", "PanelUser");
+                            }
+                            return View();
+                        }
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        ModelState.AddModelError("", "Неправильный логин и (или) пароль");
                     }
                 }
-                else
-                {
-                    ModelState.AddModelError("", "Неправильный логин и (или) пароль");
-                }
             }
+            else
+            {
+                ModelState.AddModelError("", "Неправильный логин и (или) пароль");
+            }
+            
             return View(model);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost,HttpGet]
+        [Route("Account/Logout")]
+        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
             // удаляем аутентификационные куки
+            //await HttpContext.SignOutAsync();
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }

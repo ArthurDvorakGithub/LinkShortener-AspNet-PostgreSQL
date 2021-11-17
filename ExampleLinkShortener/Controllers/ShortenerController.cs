@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using ExampleLinkShortener.Models;
 using ExampleLinkShortener.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
 namespace ExampleLinkShortener.Controllers
 {
     [ApiController]
-    [Route("shortener")]
+    //[Route("shortener")]
     public class ShortenerController : ControllerBase
     {
         private readonly IShortenerService _shortenerService;
@@ -16,20 +18,22 @@ namespace ExampleLinkShortener.Controllers
             _shortenerService = shortenerService;
         }
 
-        [HttpPost]
+        [HttpPost("shortify")]
+        
         public async Task<IActionResult> Shortify(string url)
         {
-            var userId = Guid.NewGuid().ToString();//HttpContext.User.Identity;
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var result = await _shortenerService.Shortify(url, userId);
 
-            return Ok(new {url = result});
+            var baseUrl = $"{Request.Scheme}://{Request.Host.Value}";
+
+            return Ok(new { url = $"{baseUrl}/u/{result}" });
         }
 
-        [HttpGet]
+        [HttpGet("u/{encodedUrl}")]
         public async Task<IActionResult> RedirectToLink(string encodedUrl)
         {
-            var userId = Guid.NewGuid().ToString();//HttpContext.User.Identity;
-            var link = await _shortenerService.GetLink(encodedUrl, userId);
+            var link = await _shortenerService.GetLink(encodedUrl);
 
             if (string.IsNullOrWhiteSpace(link))
             {

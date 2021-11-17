@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ExampleLinkShortener.DataAccess;
 using ExampleLinkShortener.DataAccess.Entities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 namespace ExampleLinkShortener.Services
@@ -18,32 +20,40 @@ namespace ExampleLinkShortener.Services
 
         public async Task<string> Shortify(string url, string userId)
         {
-            var bytes = Encoding.UTF8.GetBytes(url);
-            var encodedUrl = Convert.ToBase64String(bytes);
+            
+            string linkCode;
+
+            do
+            {
+                linkCode = Guid.NewGuid().ToString("n")[..6];
+            }
+            while (_context.UserLinks.Any(x => x.LinkCode == linkCode));
 
             var userLink = new UserLink
             {
-                Link = encodedUrl,
-                UserId = userId
+                LinkCode = linkCode,
+                UserId = userId,
+                Link = url
             };
 
-            await _context.AddAsync(userLink);
+
+
+            await _context.UserLinks.AddAsync(userLink);
             await _context.SaveChangesAsync();
-            
-            return encodedUrl;
+
+            return linkCode;
         }
 
-        public async Task<string> GetLink(string encodedUrl, string userId)
+
+        public async Task<string> GetLink(string encodedUrl)
         {
-            var userLink = await _context.UserLinks.FirstOrDefaultAsync(x => x.Link == encodedUrl);
-            var decodedUrl = Convert.FromBase64String(encodedUrl);
-            var decodedString = Encoding.UTF8.GetString(decodedUrl);
-            
+            var userLink = await _context.UserLinks.FirstOrDefaultAsync(x => x.LinkCode == encodedUrl);
+
             userLink.RedirectCount++;
 
             await _context.SaveChangesAsync();
 
-            return decodedString;
+            return userLink.Link;
         }
     }
 }

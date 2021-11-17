@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace ExampleLinkShortener.Controllers
 {
+    //[Authorize(Roles = "Admin")]
     public class RolesController : Controller
     {
         RoleManager<IdentityRole> _roleManager;
