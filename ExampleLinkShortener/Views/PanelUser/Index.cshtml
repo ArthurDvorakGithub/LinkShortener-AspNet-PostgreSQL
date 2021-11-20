@@ -1,28 +1,40 @@
-﻿@*@model IEnumerable<ExampleLinkShortener.DataAccess.Entities.UserLink>
+﻿@model IQueryable<UserLink>
+
 @{ ViewBag.Title = "Личный кабинет пользователя"; }
+
+<h3>Личный кабинет </h3>
 
 <a asp-action="Create">Компании</a>
 <a asp-action="Create">Ссылки</a>
-<a asp-action="Create">Добавить ссылку</a> 
+<a asp-action="Create">Добавить ссылку</a>
 <table class="table">
-    <tr><th>Статус</th><th>Название</th><th>Переходов</th><th>Полная ссылка</th><th>Короткая ссылка</th></tr>
-   @foreach (var userlink in Model)
+    <tr><th>Статус</th><th>Переходов</th><th>Полная ссылка</th><th>Короткая ссылка</th></tr>
+
+    @if(User != null)
     {
-    <tr>
-        <td>@userlink.IsActive</td>
-        <td>@userlink.Name</td>ы
-        <td>@userlink.RedirectCount</td>
-        <td>@userlink.Link</td>
-        <td>@userlink.LinkCode</td>
-        <td>
-            <form asp-action="Delete" asp-route-id="@userlink.Id" method="post">
-                <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@userlink.Id">Изменить</a>
-                <a class="btn btn-sm btn-primary" asp-action="ChangePassword" asp-route-id="@userlink.Id">Сменить пароль</a>
-                <button type="submit" class="btn btn-sm btn-danger">
-                    Удалить
-                </button>
-            </form>
-        </td>
-    </tr>
+        
+
     }
-</table>*@
+
+    @foreach (var userlink in Model)
+    {
+        
+
+        <tr>
+            <td>@userlink.IsActive</td>
+            <td>@userlink.RedirectCount</td>
+            <td>@userlink.Link</td>
+            <td>@userlink.LinkCode</td>
+            <td>
+                <form asp-action="Delete" asp-route-id="@userlink.Id" method="post">
+
+                    <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@userlink.Id">Редактировать</a>
+                    
+                    <button type="submit" class="btn btn-sm btn-danger">
+                        Удалить
+                    </button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>

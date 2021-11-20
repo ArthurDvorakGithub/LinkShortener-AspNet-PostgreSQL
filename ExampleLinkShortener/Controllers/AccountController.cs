@@ -46,7 +46,7 @@ namespace ExampleLinkShortener.Controllers
                     // установка куки
  
                     await _signInManager.SignInAsync(user, false);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "PanelUser");
                 }
                 else
                 {

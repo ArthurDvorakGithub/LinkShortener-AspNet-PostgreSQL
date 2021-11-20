@@ -18,6 +18,8 @@ namespace ExampleLinkShortener.Services
             _context = context;
         }
 
+        // сокращаем ссылку
+
         public async Task<string> Shortify(string url, string userId)
         {
             
@@ -55,5 +57,41 @@ namespace ExampleLinkShortener.Services
 
             return userLink.Link;
         }
+
+        //Выбираем все ссылки из базы данных
+        public IQueryable<UserLink> GetAllUserLinks()
+        {
+            return _context.UserLinks;
+        }
+
+        //Берем одну запись из списка
+        public UserLink GetUserLinkById(string id)
+        {
+            return _context.UserLinks.FirstOrDefault(x => x.Id == id);
+        }
+
+        public void SaveUserLink(UserLink entity)
+        {
+            //Если идентификатор отсутствует , то помечаем его как новый обьект - .Added
+            if (entity.Id == default)
+                _context.Entry(entity).State = EntityState.Added;
+
+            //Если идентификатор уже есть в БД , то помечаем его как измененный - .Modified
+            else
+                _context.Entry(entity).State = EntityState.Modified;
+            //Сохраняем
+            _context.SaveChanges();
+        }
+
+        // Удаляем текстовое поле из БД
+        public void DeleteUserLink(string id)
+        {
+            //создаем новый пустой обьект и назначаем ему идентификатор
+            _context.UserLinks.Remove(new UserLink() { Id = id });
+            _context.SaveChanges();
+        }
+
+
+
     }
 }

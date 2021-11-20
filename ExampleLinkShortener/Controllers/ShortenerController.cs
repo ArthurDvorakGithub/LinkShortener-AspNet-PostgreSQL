@@ -42,5 +42,9 @@ namespace ExampleLinkShortener.Controllers
 
             return Redirect(link);
         }
+
+        //Управление ссылками в кабинете
+
+      
     }
 }
