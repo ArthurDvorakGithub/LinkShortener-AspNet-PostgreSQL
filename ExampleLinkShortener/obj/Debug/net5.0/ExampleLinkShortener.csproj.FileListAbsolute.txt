@@ -185,3 +185,4 @@ C:\Users\Arthur\source\repos\ExampleLinkShortener\ExampleLinkShortener\bin\Debug
 C:\Users\Arthur\source\repos\ExampleLinkShortener\ExampleLinkShortener\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\Arthur\source\repos\ExampleLinkShortener\ExampleLinkShortener\obj\Debug\net5.0\Razor\Views\PanelUser\Index.cshtml.g.cs
 C:\Users\Arthur\source\repos\ExampleLinkShortener\ExampleLinkShortener\obj\Debug\net5.0\Razor\Views\PanelAdmin\Index.cshtml.g.cs
+C:\Users\Arthur\source\repos\ExampleLinkShortener\ExampleLinkShortener\obj\Debug\net5.0\Razor\Views\Shortener\Shortify.cshtml.g.cs

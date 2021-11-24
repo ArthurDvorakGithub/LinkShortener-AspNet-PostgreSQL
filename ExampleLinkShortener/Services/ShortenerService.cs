@@ -36,9 +36,8 @@ namespace ExampleLinkShortener.Services
                 LinkCode = linkCode,
                 UserId = userId,
                 Link = url
+                
             };
-
-
 
             await _context.UserLinks.AddAsync(userLink);
             await _context.SaveChangesAsync();

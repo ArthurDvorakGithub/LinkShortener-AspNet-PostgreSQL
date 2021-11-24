@@ -11,5 +11,7 @@ namespace ExampleLinkShortener.DataAccess.Entities
     {
         public int Year { get; set; }
 
+        //public List<UserLink> UserLinks { get; set; } = new List<UserLink>();
+
     }   
 }

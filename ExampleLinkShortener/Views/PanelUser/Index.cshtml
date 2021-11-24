@@ -2,19 +2,17 @@
 
 @{ ViewBag.Title = "Личный кабинет пользователя"; }
 
-<h3>Личный кабинет </h3>
+<h3>Личный кабинет</h3>
+<h5>Пользователь: @User.Identity.Name</h5>
 
 <a asp-action="Create">Компании</a>
 <a asp-action="Create">Ссылки</a>
-<a asp-action="Create">Добавить ссылку</a>
+<a asp-action="Shortify">Добавить ссылку</a>
+<li><a class="nav-link px-2 link-dark" asp-area="" asp-controller="Shortener" asp-action="Shortify">2 Добавить ссылку</a></li>
 <table class="table">
     <tr><th>Статус</th><th>Переходов</th><th>Полная ссылка</th><th>Короткая ссылка</th></tr>
 
-    @if(User != null)
-    {
-        
-
-    }
+   
 
     @foreach (var userlink in Model)
     {

@@ -25,6 +25,7 @@ namespace ExampleLinkShortener.DataAccess
             modelBuilder.Entity<UserLink>()
                 .HasIndex(u => u.LinkCode)
                 .IsUnique();
+
         }
     }
 }

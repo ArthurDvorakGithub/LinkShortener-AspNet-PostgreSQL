@@ -38,6 +38,8 @@ namespace ExampleLinkShortener.Controllers
             return View(model);
         }
 
+       
+
         [HttpPost]
         public IActionResult Delete(string id)
         {

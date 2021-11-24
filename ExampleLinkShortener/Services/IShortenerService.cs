@@ -12,7 +12,6 @@ namespace ExampleLinkShortener.Services
         UserLink GetUserLinkById(string id); // выбрать ссылку по идентификатору
         void SaveUserLink(UserLink entity); //сохранить изменения в базу данных
         void DeleteUserLink(string id); // удалить текстовое поле
-
-
+        
     }
 }
