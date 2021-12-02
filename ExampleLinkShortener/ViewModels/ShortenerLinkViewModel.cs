@@ -10,7 +10,7 @@ namespace ExampleLinkShortener.ViewModels
         
         public string Id { get; set; }
         public string Link { get; set; }
-        public string LinkName { get; set; }
+        
 
     }
 }

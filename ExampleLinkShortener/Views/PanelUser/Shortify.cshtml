@@ -1,0 +1,30 @@
+﻿@model ExampleLinkShortener.DataAccess.Entities.UserLink
+
+@{ ViewBag.Title = "Добавление новой ссылки"; }
+
+<form asp-action="Shortify" asp-controller="PanelUser">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Link" class="control-label">Link - вставьте ссылку</label>
+        <input type="text" asp-for="Link" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="LinkName" class="control-label">LinkName - добавьте название ссылки</label>
+        <input type="text" asp-for="LinkName" class="form-control" />
+    </div>
+    
+    @if (!string.IsNullOrWhiteSpace(Model.ProjectId))
+    {
+        <div class="form-group">
+            <label asp-for="ProjectId" class="control-label">Проект для ссылки</label>
+            <input type="text" asp-for="ProjectId" class="form-control" />
+        </div>
+ 
+    }
+    
+    <div class="form-group">
+        <input type="submit" value="Добавить" class="btn btn-outline-secondary" />
+    </div>
+</form>

@@ -1,10 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using ExampleLinkShortener.DataAccess;
 using ExampleLinkShortener.DataAccess.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 namespace ExampleLinkShortener.Services
@@ -18,11 +17,10 @@ namespace ExampleLinkShortener.Services
             _context = context;
         }
 
-        // сокращаем ссылку
+        // сокращаем ссылку string projectId,
 
-        public async Task<string> Shortify(string url, string userId)
+        public async Task<string> Shortify(string projectId, string linkName , string url, string userId)
         {
-            
             string linkCode;
 
             do
@@ -34,12 +32,19 @@ namespace ExampleLinkShortener.Services
             var userLink = new UserLink
             {
                 LinkCode = linkCode,
+                LinkName = linkName,
                 UserId = userId,
                 Link = url
-                
             };
 
-            await _context.UserLinks.AddAsync(userLink);
+            var link = await _context.UserLinks.AddAsync(userLink);
+
+            await _context.ProjectLinks.AddAsync(new ProjectLink
+            {
+                LinkId = link.Entity.Id,
+                ProjectId = projectId
+            });
+
             await _context.SaveChangesAsync();
 
             return linkCode;
@@ -58,9 +63,14 @@ namespace ExampleLinkShortener.Services
         }
 
         //Выбираем все ссылки из базы данных
-        public IQueryable<UserLink> GetAllUserLinks()
+        public List<UserLink> GetLinksByUserId(string id)
         {
-            return _context.UserLinks;
+            var userLinks = _context.Users.AsNoTracking()
+                .Include(x => x.UserLinks)
+                .FirstOrDefault(x => x.Id == id)?
+                .UserLinks;
+            
+            return userLinks;
         }
 
         //Берем одну запись из списка
@@ -85,12 +95,23 @@ namespace ExampleLinkShortener.Services
         // Удаляем текстовое поле из БД
         public void DeleteUserLink(string id)
         {
-            //создаем новый пустой обьект и назначаем ему идентификатор
-            _context.UserLinks.Remove(new UserLink() { Id = id });
+            var links = _context.ProjectLinks.Where(x => x.LinkId == id);
+            var linkQty = links.CountAsync();
+            var userLink = _context.UserLinks.AsNoTracking().FirstOrDefault(e => e.Id == id);
+
+            if (linkQty.Result != 0)
+            {
+                var projectLinks = _context.ProjectLinks.Where(e => e.LinkId == id);
+
+                foreach (var projectLink in projectLinks)
+                {
+                    _context.ProjectLinks.Remove(projectLink);
+                }
+            }
+
+            _context.UserLinks.Remove(userLink);
+           
             _context.SaveChanges();
         }
-
-
-
     }
 }

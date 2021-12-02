@@ -1,0 +1,35 @@
+﻿@using ExampleLinkShortener.Models
+@model List<ProjectModel>
+
+@{ ViewBag.Title = "Личный кабинет пользователя"; }
+
+<h3>Личный кабинет </h3>
+<h3>Проекты </h3>
+
+<a asp-action="GetProjects">Мои проекты</a>
+<a asp-action="Index">Мои ссылки</a>
+<a asp-action="CreateProject">Добавить проект</a>
+<table class="table">
+    <tr><th>Название </th><th>Переходов</th><th>Количество ссылок</th><th>Действие</th></tr>
+    
+
+    @foreach (var project in Model)
+    {
+
+        <tr>
+            <td>@project.Name</td>
+            <td>@project.TransitionQuantity</td>
+            <td><a class="nav-link px-2 link-dark" asp-area="" asp-controller="PanelUser" asp-action="GetProjectLinksById" asp-route-id="@project.Id">Ссылок: @project.LinkQuantity</a></td>
+            <td>
+                <form asp-action="DeleteProjectsPanel" asp-route-id="@project.Id" method="post">
+
+                    <a class="btn btn-sm btn-primary" asp-action="EditProject" asp-route-id="@project.Id">Редактировать</a>
+
+                    <button type="submit" class="btn btn-sm btn-danger">
+                        Удалить
+                    </button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>

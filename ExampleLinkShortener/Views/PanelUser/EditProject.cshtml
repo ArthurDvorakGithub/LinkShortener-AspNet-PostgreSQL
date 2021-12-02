@@ -1,0 +1,25 @@
+﻿@model ExampleLinkShortener.DataAccess.Entities.Project
+
+@{ ViewBag.Title = "Редактирование проекта"; }
+
+<form asp-action="EditProject" asp-controller="PanelUser">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <input type="hidden" asp-for="UserId" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Ссылка</label>
+        <input type="text" asp-for="Name" class="form-control" />
+    </div>
+    @*<div class="form-group">
+        <label asp-for="LinkName" class="control-label">Новое название ссылки</label>
+        <input type="text" asp-for="LinkName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="LinkCode" class="control-label">Короткая ссылка</label>
+        <input type="text" asp-for="LinkCode" class="form-control" />
+    </div>*@
+    <div class="form-group">
+        <input type="submit" value="Сохранить" class="btn btn-outline-secondary" />
+    </div>
+</form>

@@ -16,8 +16,8 @@
                     <h2>Управление пользователями</h2>
                     <p>Ознакомьтесь с этими проектами с открытым исходным кодом, которые вы можете скопировать в новый репозиторий GitHub.</p>
                     <ul class="icon-list">
-                        <li><a href="https://github.com/twbs/bootstrap-npm-starter" rel="noopener" target="_blank">Список пользователей</a></li>
-                        <li class="text-muted">Bootstrap Parcel starter (coming soon!)</li>
+                        <li><a class="nav-link px-2 link-dark" asp-area="" asp-controller="Users" asp-action="Index">Редактирование пользователей</a></li>
+                        <li><a class="nav-link px-2 link-dark" asp-area="" asp-controller="Users" asp-action="Create">Добавить нового пользователя</a></li>
                     </ul>
                 </div>
 
@@ -25,24 +25,23 @@
                     <h2>Управления ролями</h2>
                     <p>Прочтите более подробные инструкции и документацию по использованию Bootstrap или содействию ему.</p>
                     <ul class="icon-list">
-                        <li><a href="/docs/5.1/getting-started/introduction/">Список ролей</a></li>
-                        <li><a href="/docs/5.1/getting-started/webpack/">Роли пользователей</a></li>
-                        <li><a href="/docs/5.1/getting-started/parcel/">Редактирование ролей</a></li>
-                        <li><a href="/docs/5.1/getting-started/contribute/">Создать новую роль</a></li>
+                        <li><a class="nav-link px-2 link-dark" asp-area="" asp-controller="Roles" asp-action="UserList">Роли пользователей</a></li>
+                        <li><a class="nav-link px-2 link-dark" asp-area="" asp-controller="Roles" asp-action="Index">Список ролей</a></li>
+                        <li><a class="nav-link px-2 link-dark" asp-area="" asp-controller="Roles" asp-action="Create">Добавить роль</a></li>
                     </ul>
                 </div>
             </div>
 
             <hr class="col-3 col-md-2 mb-5">
 
-            <h2>Загрузите новые файлы</h2>
+            @*<h2>Загрузите новые файлы</h2>
             <p class="fs-5 col-md-8">Быстро и легко приступайте к работе с скомпилированными, готовыми к работе файлами Bootstrap с помощью этого простого примера, содержащего базовый HTML и полезные ссылки. Загрузите все наши примеры, чтобы начать.</p>
 
             <div class="mb-5">
                 <a href="/docs/5.1/examples/" class="btn btn-primary btn-lg px-4">Download examples</a>
             </div>
 
-            <hr class="col-3 col-md-2 mb-5">
+            <hr class="col-3 col-md-2 mb-5">*@
         </main>
     </div>
 </div>

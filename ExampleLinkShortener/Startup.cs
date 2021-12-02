@@ -31,7 +31,7 @@ namespace ExampleLinkShortener
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationContext>();
@@ -49,21 +49,21 @@ namespace ExampleLinkShortener
             // Google login
             services.AddAuthentication()
             .AddGoogle(options =>
-             {
-                 IConfigurationSection googleAuthNSection =
-                       Configuration.GetSection("Authentication:Google");
-                 options.ClientId = "x";
-                 options.ClientSecret = "x  ";
-                 //this function is get user google profile image
-                 options.Scope.Add("profile");
-                 options.Events.OnCreatingTicket = (context) =>
-                 {
-                     var picture = context.User.GetProperty("picture").GetString();
-                     context.Identity.AddClaim(new Claim("picture", picture));
-                     return Task.CompletedTask;
-                 };
+            {
+                IConfigurationSection googleAuthNSection =
+                      Configuration.GetSection("Authentication:Google");
+                options.ClientId = "x";
+                options.ClientSecret = "x  ";
+                //this function is get user google profile image
+                options.Scope.Add("profile");
+                options.Events.OnCreatingTicket = (context) =>
+                {
+                    var picture = context.User.GetProperty("picture").GetString();
+                    context.Identity.AddClaim(new Claim("picture", picture));
+                    return Task.CompletedTask;
+                };
 
-             });
+            });
 
 
             services.AddControllersWithViews();
@@ -76,13 +76,17 @@ namespace ExampleLinkShortener
             services.AddControllersWithViews();
 
             services.AddScoped<IShortenerService, ShortenerService>();
+            services.AddScoped<IProjectService, ProjectService>();
             services.AddScoped<DbSeeder>();
 
         }
 
-        public void Configure(IApplicationBuilder app, DbSeeder seeder)
+        public void Configure(IApplicationBuilder app, DbSeeder seeder, ApplicationContext context)
         {
+            context.Database.EnsureCreated();
+            //context.Database.Migrate();
             seeder.Seed().Wait();
+
             app.UseDeveloperExceptionPage();
 
             app.UseSwagger();
@@ -93,7 +97,7 @@ namespace ExampleLinkShortener
 
             app.UseRouting();
 
-            app.UseAuthentication();    // подключение аутентификации
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

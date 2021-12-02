@@ -1,0 +1,51 @@
+﻿@using ExampleLinkShortener.Models
+@model ProjectWithLinksModel
+
+@{ ViewBag.Title = "Личный кабинет пользователя"; }
+
+<h3>Личный кабинет </h3>
+<h3>Сcылки для проекта </h3>
+
+<a asp-action="GetProjects">Проекты</a>
+<a asp-action="Index">Ссылки</a>
+<a asp-action="Shortify" asp-route-id="@Model.Id">Добавить ссылку в проект</a>
+<table class="table">
+    <tr><th>Статус</th><th>Название</th><th>Переходы</th><th>Ссылка</th><th>Короткая ссылка</th><th>Действие</th></tr>
+
+
+    @foreach (var userLink in Model.Links)
+    {
+
+        <tr>
+            <td>
+                @if (userLink.IsActive == true)
+                {
+                    <button type="button" class="btn btn-outline-primary">Актив.</button>
+                }
+                else
+                {
+                    <button type="button" class="btn btn-outline-secondary">Неакт.</button>
+                }
+            </td>
+            <td>@userLink.LinkName</td>
+            <td>@userLink.RedirectCount</td>
+            <td><a href="@userLink.Link">@userLink.Link</a></td>
+
+                @if(userLink.IsActive)
+                {
+                    <td><a href="@userLink.LinkCode">@userLink.LinkCode</a></td>
+                }
+                 else
+                {
+                    <td>@userLink.LinkCode</td>
+                }
+            
+                <td>
+                    <a class="btn btn-sm btn-primary" asp-action="EditLink" asp-route-id="@userLink.Id">Редактировать</a>
+                    <form asp-action="Delete" asp-route-id="@userLink.Id" method="post">
+                        <button type="submit" class="btn btn-sm btn-danger">Удалить</button>
+                    </form>
+                </td>
+        </tr>
+    }
+</table>

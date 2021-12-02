@@ -1,32 +1,48 @@
-﻿@model IQueryable<UserLink>
+﻿@model List<UserLink>
 
 @{ ViewBag.Title = "Личный кабинет пользователя"; }
 
-<h3>Личный кабинет</h3>
+<h3>Личный кабинет </h3>
 <h5>Пользователь: @User.Identity.Name</h5>
+<h3>Главная страница </h3>
 
-<a asp-action="Create">Компании</a>
-<a asp-action="Create">Ссылки</a>
+<a asp-action="GetProjects">Мои проекты</a>
+<a asp-action="Index">Мои ссылки</a>
 <a asp-action="Shortify">Добавить ссылку</a>
-<li><a class="nav-link px-2 link-dark" asp-area="" asp-controller="Shortener" asp-action="Shortify">2 Добавить ссылку</a></li>
 <table class="table">
-    <tr><th>Статус</th><th>Переходов</th><th>Полная ссылка</th><th>Короткая ссылка</th></tr>
+    <tr><th>Статус</th><th>Название</th><th>Переходов</th><th>Полная ссылка</th><th>Короткая ссылка</th><th>Действие</th></tr>
 
-   
 
     @foreach (var userlink in Model)
     {
-        
 
         <tr>
-            <td>@userlink.IsActive</td>
+            <td>
+                @if (userlink.IsActive == true)
+                {
+                    <button type="button" class="btn btn-outline-primary">Актив.</button>
+                }
+                else
+                {
+                    <button type="button" class="btn btn-outline-secondary">Неакт.</button>
+                }
+            </td>
+            <td>@userlink.LinkName</td>
             <td>@userlink.RedirectCount</td>
-            <td>@userlink.Link</td>
-            <td>@userlink.LinkCode</td>
+            <td><a href="@userlink.Link">@userlink.Link</a></td>
+                @if(userlink.IsActive == true)
+                {
+                    <td><a href="@userlink.LinkCode">@userlink.LinkCode</a></td>
+                }
+                 else
+                {
+                    <td>@userlink.LinkCode</td>
+                }
+            
             <td>
                 <form asp-action="Delete" asp-route-id="@userlink.Id" method="post">
 
-                    <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@userlink.Id">Редактировать</a>
+                    <a class="btn btn-sm btn-primary" asp-action="EditLink" asp-route-id="@userlink.Id">Редактировать</a>
                     
                     <button type="submit" class="btn btn-sm btn-danger">
                         Удалить
