@@ -4,9 +4,11 @@ using ExampleLinkShortener.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ExampleLinkShortener.Controllers
 {
+    [Authorize(Roles = "User")]
     public class PanelUserController : Controller
     {
         private readonly IShortenerService _shortenerService;
@@ -171,8 +173,6 @@ namespace ExampleLinkShortener.Controllers
             }
             return View(model);
         }
-
-
 
     }
 }

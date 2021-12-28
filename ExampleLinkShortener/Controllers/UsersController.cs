@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ExampleLinkShortener.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class UsersController : Controller
     {
         UserManager<User> _userManager;
