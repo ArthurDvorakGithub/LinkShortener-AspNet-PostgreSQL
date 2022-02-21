@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ExampleLinkShortener.Controllers
 {
-    [Authorize(Roles = "User")]
+    //[Authorize(Roles = "User")]
     public class PanelUserController : Controller
     {
         private readonly IShortenerService _shortenerService;
